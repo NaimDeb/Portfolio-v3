@@ -18,6 +18,7 @@
     "typescript": "^5.5.3"
   },
   "devDependencies": {
+    "@types/react": "^18.3.12",
     "sass": "^1.81.0"
   }
 }
