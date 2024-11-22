@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import RepoCard from "../RepoCard/RepoCard";
 import Spinner from "../ui/Spinner";
 import Alert from "../ui/Alert";
-import "./RepoList.styles.scss";
 
 type PinnedRepos = {
   owner: string;
@@ -14,6 +13,7 @@ type PinnedRepos = {
   languageColor: string;
   stars: number;
   forks: number;
+  e: string;
 };
 
 export default function RepoList() {
@@ -25,7 +25,7 @@ export default function RepoList() {
       const fetchRepos = async () => {
         try {
           const response = await fetch(
-            "https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=stekatag"
+            "https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=NaimDeb"
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -54,10 +54,10 @@ export default function RepoList() {
   
     return (
       <>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
+        <div className="flex flex-wrap items-center justify-center gap-8 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
           {loading ? (
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <h4 className="text-xl md:text-2xl">Loading projects</h4>
+            <div className="flex flex-col items-center justify-center gap-4 mb-6">
+              <h4 className="text-xl md:text-2xl text-slate-100">Loading projects</h4>
               <Spinner />
             </div>
           ) : (

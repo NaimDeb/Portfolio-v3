@@ -1,5 +1,6 @@
+import { useState, useRef, useEffect } from 'react';
 import Icon from "../ui/Icon/Icon";
-import "./RepoCard.styles.scss";
+import { log } from 'node_modules/astro/dist/core/logger/core';
 
 type RepoCardProps = {
   repo: string;
@@ -11,6 +12,11 @@ type RepoCardProps = {
   forks: number;
 };
 
+type MousePosition = {
+  x: number;
+  y: number;
+};
+
 export default function RepoCard({
   repo,
   link,
@@ -20,16 +26,55 @@ export default function RepoCard({
   stars,
   forks,
 }: RepoCardProps) {
+  const [isHovering, setIsHovering] = useState(false);
+  const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLAnchorElement>(null);
+
+  const getRawGitHubUrl = (githubUrl: string) => {
+    // Extract username and repo name from GitHub URL
+    const match = githubUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
+    if (!match) return null;
+    const [, username, repoName] = match;
+    return `https://raw.githubusercontent.com/${username}/${repoName}/refs/heads/main/preview.png`;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return;
+    
+    const rect = document.documentElement.getClientRects();
+    if ((e.clientX + 400 )> rect[0].width) { 
+    setMousePos({
+      x: e.clientX - 195,
+      y: e.clientY - 190
+    });
+
+
+
+  }
+  else{
+    setMousePos({
+      x: e.clientX + 195,
+      y: e.clientY - 190
+    });
+
+  }
+  };
+
   return (
+<div className="relative">
 <a
-  className="block text-decoration-none p-4 md:p-5 lg:p-7 bg-gradient-to-r from-gray-100 to-gray-200 border-2 border-accent-regular shadow-sm rounded-lg transition-all hover:shadow-md hover:border-accent-dark hover:brightness-110 hover:-translate-y-2"
+  ref={cardRef}
+  className="block text-decoration-none max-sm:min-w-[90%] sm:w-[30rem] p-4 md:p-5 lg:p-7 bg-gradient-to-br from-neutral-900 to-neutral-950 border-2 border-gray-500 shadow-sm rounded-lg transition-all hover:shadow-md hover:border-accent-dark hover:brightness-110 hover:-translate-y-2"
   href={link}
   title="View repo"
   target="_blank"
   rel="noopener noreferrer"
+  onMouseEnter={() => setIsHovering(true)}
+  onMouseLeave={() => setIsHovering(false)}
+  onMouseMove={handleMouseMove}
 >
-  <div className="flex items-center justify-between gap-3">
-    <h3 className="text-lg md:text-xl">{repo}</h3>
+  <div className="flex items-center justify-between gap-3 repoCard">
+    <h3 className="text-lg md:text-xl text-slate-200">{repo}</h3>
     <Icon icon="github-logo" color="var(--gray-200)" size="2.5em" />
   </div>
   <p className="text-sm md:text-base my-3 text-gray-200 overflow-hidden line-clamp-3 md:min-h-[4.5rem]">
@@ -44,7 +89,7 @@ export default function RepoCard({
       <span className="text-sm md:text-base font-bold text-gray-200">{language}</span>
     </div>
     <div className="flex items-center gap-3">
-      {stars > 0 && (
+      {stars >= 0 && (
         <span className="flex items-center gap-1 text-gray-200 text-sm md:text-base">
           <Icon icon="star" color="var(--gray-200)" size="1.25em" />
           <span>{stars}</span>
@@ -59,5 +104,38 @@ export default function RepoCard({
     </div>
   </div>
 </a>
+
+
+      <div
+        className={`fixed w-96 h-96 pointer-events-none rounded-lg overflow-hidden bg-black/80 backdrop-blur-sm transition-opacity duration-300 z-50 transform -translate-x-1/2 -translate-y-1/2 border border-gray-500/30`}
+        style={{
+          opacity: isHovering ? 1 : 0,
+          left: `${mousePos.x}px`,
+          top: `${mousePos.y}px`,
+        }}
+      >
+        <img
+        // Opération ternaire pour éviter erreur
+          src={`${getRawGitHubUrl(link) ? getRawGitHubUrl(link) : null}` }
+          alt={`${repo} preview`}
+          className={`w-full h-full object-cover opacity-80 bg-top transition-[background-position] !duration-[8s] ease-in-out ${
+            isHovering ? 'animate-slide-bg' : ''
+          }`}
+          style={{
+            objectPosition: isHovering ? 'center bottom' : 'center top'
+          }}
+
+          onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            img.src = 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=300&auto=format&fit=crop';
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute bottom-2 left-3 right-3">
+          <p className="text-white text-sm font-medium truncate">{repo}</p>
+          <p className="text-gray-300 text-xs truncate">{description}</p>
+        </div>
+      </div>
+    </div>
   );
 }
