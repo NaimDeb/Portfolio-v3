@@ -51,7 +51,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
   <div id="menu-content" class="absolute left-0 right-0 sm:contents">
     <!-- Hamburger menu onclick nav -->
-    <ul class="m-0 flex flex-col gap-4 text-[var(--text-md)] leading-[1.2] list-none p-8 bg-[var(--gray-999)] border-b border-[var(--gray-800)] 
+    <ul class="m-0 flex flex-col gap-4 text-[var(--text-md)] leading-[1.2] list-none p-8 bg-[hsl(var(--foreground))] border-b border-[var(--gray-800)] 
     sm:relative sm:flex-row sm:gap-2 sm:text-[var(--text-sm)] sm:rounded-full sm:border-0 sm:p-2 sm:backdrop-blur-md sm:shadow-[var(--shadow-md)]">
       {textLinks.map(({ label, href }) => (
         <li>
@@ -75,15 +75,15 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
     </ul>
 
     <!-- Bottom part of Hamburger menu onclick nav -->
-    <div class="flex justify-between gap-3 p-6 bg-[var(--gray-999)] rounded-b-lg shadow-[var(--shadow-lg)] 
+    <div class="flex justify-between gap-3 p-6 bg-[hsl(var(--foreground))] rounded-b-lg shadow-[var(--shadow-lg)] 
     sm:justify-self-end sm:items-center sm:p-0 sm:bg-transparent sm:shadow-none">
       <!-- Boutons socials -->
       <div class="flex flex-wrap gap-[10px] text-[var(--text-xl)] sm:hidden lg:flex lg:justify-end lg:gap-0">
         {iconLinks.map(({ href, icon, label }) => (
           <a 
             href={href} 
-            class="flex p-[var(--icon-padding)] no-underline text-[var(--accent-dark)] transition-colors duration-[var(--theme-transition)] text-[1.8rem] 
-            hover:text-[var(--accent-text-over)] focus:text-[var(--accent-text-over)]"
+            class="flex p-[var(--icon-padding)] no-underline text-slate-100 md:text-black transition-colors duration-[var(--theme-transition)] text-[1.8rem] 
+            hover:text-slate-200 focus:text-[var(--accent-text-over)"
             target="_blank" 
             title={label}
           >
