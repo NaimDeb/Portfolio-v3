@@ -10,6 +10,7 @@ export default {
       animation: {
         "slide-logos": "slide-logos 30s linear infinite",
         "vertical-slide": "vertical-slide 30s linear infinite forwards",
+        'slide-bg': 'slideBg 8s ease-in-out',
       },
       keyframes: {
         "slide-logos": {
@@ -17,6 +18,10 @@ export default {
         },
         "vertical-slide": {
           to: { transform: "translateY(calc(-50% - 2rem))" },
+        },
+        slideBg: {
+          '0%': { 'background-position': 'center top' },
+          '100%': { 'background-position': 'center bottom' }
         },
         aurora: {
           from: {

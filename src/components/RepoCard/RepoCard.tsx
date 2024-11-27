@@ -35,7 +35,7 @@ export default function RepoCard({
     const match = githubUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
     if (!match) return null;
     const [, username, repoName] = match;
-    return `https://raw.githubusercontent.com/${username}/${repoName}/refs/heads/main/preview.png`;
+    return `https://raw.githubusercontent.com/${username}/${repoName}/refs/heads/main/preview.gif`;
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -107,7 +107,7 @@ export default function RepoCard({
 
 
       <div
-        className={`fixed w-96 h-96 pointer-events-none rounded-lg overflow-hidden bg-black/80 backdrop-blur-sm transition-opacity duration-300 z-50 transform -translate-x-1/2 -translate-y-1/2 border border-gray-500/30`}
+        className={`fixed w-96 h-56 pointer-events-none rounded-lg overflow-hidden bg-black/80 backdrop-blur-sm transition-opacity duration-300 z-50 transform -translate-x-1/2 -translate-y-1/2 border border-gray-500/30`}
         style={{
           opacity: isHovering ? 1 : 0,
           left: `${mousePos.x}px`,
@@ -118,12 +118,8 @@ export default function RepoCard({
         // Opération ternaire pour éviter erreur
           src={`${getRawGitHubUrl(link) ? getRawGitHubUrl(link) : null}` }
           alt={`${repo} preview`}
-          className={`w-full h-full object-cover opacity-80 bg-top transition-[background-position] !duration-[8s] ease-in-out ${
-            isHovering ? 'animate-slide-bg' : ''
+          className={`w-full h-full object-contain opacity-80 bg-top transition-transform !duration-[8s] ease-in-out
           }`}
-          style={{
-            objectPosition: isHovering ? 'center bottom' : 'center top'
-          }}
 
           onError={(e) => {
             const img = e.target as HTMLImageElement;
