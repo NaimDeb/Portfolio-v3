@@ -61,7 +61,7 @@ export default function RepoCard({
   };
 
   return (
-<div className="relative">
+<div className="relative max-sm:w-full">
 <a
   ref={cardRef}
   className="block text-decoration-none max-sm:min-w-[90%] sm:w-[30rem] p-4 md:p-5 lg:p-7 bg-gradient-to-br from-neutral-900 to-neutral-950 border-2 border-gray-500 shadow-sm rounded-lg transition-all hover:shadow-md hover:border-accent-dark hover:brightness-110 hover:-translate-y-2"
@@ -107,7 +107,7 @@ export default function RepoCard({
 
 
       <div
-        className={`fixed w-96 h-56 pointer-events-none rounded-lg overflow-hidden bg-black/80 backdrop-blur-sm transition-opacity duration-300 z-50 transform -translate-x-1/2 -translate-y-1/2 border border-gray-500/30`}
+        className={`fixed w-96 h-56 pointer-events-none rounded-lg overflow-hidden bg-black/80 backdrop-blur-sm transition-opacity duration-300 z-50 transform -translate-x-1/2 -translate-y-1/2 border border-gray-500/30 `}
         style={{
           opacity: isHovering ? 1 : 0,
           left: `${mousePos.x}px`,

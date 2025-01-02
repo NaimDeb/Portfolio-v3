@@ -3,7 +3,9 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 /** @type {import('tailwindcss').Config} */
+
 export default {
+  darkMode: 'selector',
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
@@ -36,6 +38,7 @@ export default {
         primary: "hsl(var(--primary))",
         secondary: "hsl(var(--secondary))",
         background: "hsl(var(--background))",
+        "dark-background": "hsl(var(--dark-background))",
         accent: "hsl(var(--accent))",
         foreground: "hsl(var(--foreground))",
         "muted-foreground": "hsl(var(--muted-foreground))",
@@ -44,6 +47,9 @@ export default {
         card: "hsl(var(--card))",
         "dark-card": "hsl(var(--dark-card))",
       },
+      backgroundImage: {
+        'photo': "url('./assets/gato.png')",
+      }
     },
   },
   plugins: [addVariablesForColors],
@@ -59,3 +65,4 @@ function addVariablesForColors({ addBase, theme }) {
     ":root": newVars,
   });
 }
+

@@ -21,7 +21,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
 <!-- Header imported from i need to getr the name of the guy -->
 
-<nav class="relative z-[9999] font-medium mb-[3.5rem] sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:p-10 sm:gap-4 md:sticky md:top-0">
+<nav class="sticky z-[9999] font-medium mb-[3.5rem] sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:p-3 sm:gap-4 top-0 backdrop-blur-md rounded-full">
   <div class="flex justify-between gap-2 p-6 sm:p-0">
     <!-- Nom à gauche du header -->
     <a href="/" class="flex items-center gap-2 leading-[1.1] text-[var(--gray-0)] no-underline sm:text-[var(--text-lg)]">
@@ -51,7 +51,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
   <div id="menu-content" class="absolute left-0 right-0 sm:contents">
     <!-- Hamburger menu onclick nav -->
-    <ul class="m-0 flex flex-col gap-4 text-[var(--text-md)] leading-[1.2] list-none p-8 bg-[hsl(var(--foreground))] border-b border-[var(--gray-800)] 
+    <ul class="m-0 flex flex-col gap-4 text-[var(--text-md)] leading-[1.2] list-none p-8 bg-slate-800 border-b border-[var(--gray-800)] 
     sm:relative sm:flex-row sm:gap-2 sm:text-[var(--text-sm)] sm:rounded-full sm:border-0 sm:p-2 sm:backdrop-blur-md sm:shadow-[var(--shadow-md)]">
       {textLinks.map(({ label, href }) => (
         <li>
@@ -75,7 +75,7 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
     </ul>
 
     <!-- Bottom part of Hamburger menu onclick nav -->
-    <div class="flex justify-between gap-3 p-6 bg-[hsl(var(--foreground))] rounded-b-lg shadow-[var(--shadow-lg)] 
+    <div class="flex justify-between gap-3 p-6 bg-slate-800 rounded-b-lg shadow-[var(--shadow-lg)] 
     sm:justify-self-end sm:items-center sm:p-0 sm:bg-transparent sm:shadow-none">
       <!-- Boutons socials -->
       <div class="flex flex-wrap gap-[10px] text-[var(--text-xl)] sm:hidden lg:flex lg:justify-end lg:gap-0">
