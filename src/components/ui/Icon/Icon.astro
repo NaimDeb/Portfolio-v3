@@ -7,7 +7,10 @@ export interface Props {
   color?: string;
   gradient?: boolean;
   size?: string;
+  class?: string;
 }
+
+const { class: className } = Astro.props as Props;
 
 const { color = "currentcolor", gradient, icon, size } = Astro.props;
 const iconPath = iconPaths[icon];
@@ -25,6 +28,7 @@ const gradientId =
   height="40"
   viewBox="0 0 256 256"
   aria-hidden="true"
+  class={className}
   stroke={gradient ? `url(#${gradientId})` : color}
   {...attrs}
 >

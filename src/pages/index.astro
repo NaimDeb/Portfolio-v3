@@ -10,7 +10,7 @@ import Footer from "@/components/Footer.astro";
 
 <Layout title="Free Astro Portfolio - LiteFolio">
   <main
-    class="relative w-full flex flex-col justify-start items-center pattern"
+    class="relative w-full flex flex-col justify-start items-center bg-pattern dark:bg-dark-pattern bg-blend-multiply"
   >
     <Header />
     <Hero />
@@ -21,20 +21,9 @@ import Footer from "@/components/Footer.astro";
   </main>
 </Layout>
 
+
 <style>
-  .pattern {
-    background-color: #ffffff;
-    background-image: radial-gradient(circle at top center, #f5fdff 70px, white),
-      repeating-radial-gradient(
-        circle at top center,
-        #ffffff,
-        #ffffff,
-        200px,
-        transparent 0,
-        #eaeaea 201px
-      );
+  .bg-blend-multiply{
     background-blend-mode: multiply;
-    animation : patternToDark 3s ease ;
-    animation-fill-mode :both
   }
 </style>

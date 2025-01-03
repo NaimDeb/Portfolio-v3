@@ -15,30 +15,35 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
     label: "GitHub",
     href: "https://github.com/Nadir-Bsd",
     icon: "github-logo",
-  }
+  },
 ];
 ---
 
 <!-- Header imported from i need to getr the name of the guy -->
-
-<nav class="sticky z-[9999] font-medium mb-[3.5rem] sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:p-3 sm:gap-4 top-0 backdrop-blur-md rounded-full">
-  <div class="flex justify-between gap-2 p-6 sm:p-0">
+<nav
+  class="sticky z-[9999] font-medium mb-[3.5rem] sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:p-3 sm:gap-4 top-0 backdrop-blur-md rounded-full"
+>
+  <div class="flex justify-between gap-2 p-6 sm:p- dark:text-slate-100">
     <!-- Nom à gauche du header -->
-    <a href="/" class="flex items-center gap-2 leading-[1.1] text-[var(--gray-0)] no-underline sm:text-[var(--text-lg)]">
+    <a
+      href="/"
+      class="flex items-center gap-2 leading-[1.1] text-gray  no-underline sm:text-[var(--text-lg)] transition-all"
+    >
       <Icon
         icon="terminal-window"
         color="var(--accent-regular)"
         size="1.6em"
         gradient
+        class="dark:invert"
       />
-      Naïm D
+      Naïm Debard
     </a>
 
     <!-- Bouton hamburger -->
     <menu-button>
       <template>
-        <button 
-          class="relative flex border-0 rounded-full p-2 text-[1.5rem] text-[var(--gray-300)] bg-[radial-gradient(var(--gray-900),var(--gray-800)_150%)] 
+        <button
+          class="relative flex border-0 rounded-full p-2 text-[1.5rem] text-[var(--gray-300)] bg-[radial-gradient(var(--gray-900),var(--gray-800)_150%)]
           sm:hidden dark:text-gray-900 dark:bg-[radial-gradient(var(--gray-0),var(--gray-100)_150%)]"
           aria-expanded="false"
         >
@@ -51,57 +56,68 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
 
   <div id="menu-content" class="absolute left-0 right-0 sm:contents">
     <!-- Hamburger menu onclick nav -->
-    <ul class="m-0 flex flex-col gap-4 text-[var(--text-md)] leading-[1.2] list-none p-8 bg-slate-800 border-b border-[var(--gray-800)] 
-    sm:relative sm:flex-row sm:gap-2 sm:text-[var(--text-sm)] sm:rounded-full sm:border-0 sm:p-2 sm:backdrop-blur-md sm:shadow-[var(--shadow-md)]">
-      {textLinks.map(({ label, href }) => (
-        <li>
-          <a
-            aria-current={Astro.url.pathname === href}
-            class:list={[
-              "inline-block text-[var(--gray-300)] no-underline transition-colors duration-[var(--theme-transition)] sm:px-4 sm:py-2 sm:rounded-full",
-              {
-                active:
-                  Astro.url.pathname === href || Astro.url.pathname.startsWith(href),
-                hover:
-                  "hover:text-[var(--gray-100)] hover:bg-[var(--accent-subtle-overlay)]",
-              },
-            ]}
-            href={href}
-          >
-            {label}
-          </a>
-        </li>
-      ))}
+    <ul
+      class="m-0 flex flex-col gap-4 text-[var(--text-md)] leading-[1.2] list-none p-8 bg-foreground border-b border-[var(--gray-800)]
+    sm:relative sm:flex-row sm:gap-2 sm:text-[var(--text-sm)] sm:rounded-full sm:border-0 sm:p-2 sm:backdrop-blur-md sm:shadow-[var(--shadow-md)]"
+    >
+      {
+        textLinks.map(({ label, href }) => (
+          <li>
+            <a
+              aria-current={Astro.url.pathname === href}
+              class:list={[
+                "inline-block text-[var(--gray-300)] no-underline transition-colors duration-[var(--theme-transition)] sm:px-4 sm:py-2 sm:rounded-full",
+                {
+                  active:
+                    Astro.url.pathname === href ||
+                    Astro.url.pathname.startsWith(href),
+                  hover:
+                    "hover:text-[var(--gray-100)] hover:bg-[var(--accent-subtle-overlay)]",
+                },
+              ]}
+              href={href}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
     <!-- Bottom part of Hamburger menu onclick nav -->
-    <div class="flex justify-between gap-3 p-6 bg-slate-800 rounded-b-lg shadow-[var(--shadow-lg)] 
-    sm:justify-self-end sm:items-center sm:p-0 sm:bg-transparent sm:shadow-none">
+    <div
+      class="flex justify-between gap-3 p-6 bg-foreground rounded-b-lg shadow-[var(--shadow-lg)]
+    sm:justify-self-end sm:items-center sm:p-0 sm:bg-transparent sm:shadow-none"
+    >
       <!-- Boutons socials -->
-      <div class="flex flex-wrap gap-[10px] text-[var(--text-xl)] sm:hidden lg:flex lg:justify-end lg:gap-0">
-        {iconLinks.map(({ href, icon, label }) => (
-          <a 
-            href={href} 
-            class="flex p-[var(--icon-padding)] no-underline text-slate-100 md:text-black transition-colors duration-[var(--theme-transition)] text-[1.8rem] 
-            hover:text-slate-200 focus:text-[var(--accent-text-over)"
-            target="_blank" 
-            title={label}
-          >
-            <span class="sr-only">{label}</span>
-            <Icon icon={icon} />
-          </a>
-        ))}
+      <div
+        class="flex flex-wrap gap-[10px] text-[var(--text-xl)] sm:hidden lg:flex lg:justify-end lg:gap-0 socials"
+      >
+        {
+          iconLinks.map(({ href, icon, label }) => (
+            <a
+              href={href}
+              class="flex p-[var(--icon-padding)] no-underline text-slate-100 md:text-black transition-colors duration-[var(--theme-transition)] text-[1.8rem] 
+            hover:text-slate-200 focus:text-[var(--accent-text-over) hover:scale-125 transition-all"
+              target="_blank"
+              title={label}
+            >
+              <span class="sr-only">{label}</span>
+              <Icon icon={icon} />
+            </a>
+          ))
+        }
       </div>
 
       <!-- Theme toggle -->
-      <div class="flex items-center h-[calc(var(--icon-size)+2*var(--icon-padding))]">
+      <div
+        class="flex items-center h-[calc(var(--icon-size)+2*var(--icon-padding))]"
+      >
         <ThemeToggle />
       </div>
     </div>
   </div>
 </nav>
-
-
 
 <script>
   class MenuButton extends HTMLElement {
@@ -136,4 +152,26 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
     }
   }
   customElements.define("menu-button", MenuButton);
+
+  // Change color based on scroll
+
+  const navtext = document.querySelector("nav div a");
+  const socials = document.querySelector(".socials");
+  const htmlclasses = document.documentElement.classList
+
+  // If navtext exists and html doesn't have dark class
+  if (navtext && socials) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 900) {
+  
+        htmlclasses.contains("dark") ?  null : navtext.classList.add("invert");
+        htmlclasses.contains("dark") ?  null : socials.classList.add("invert");
+
+      } else {
+        htmlclasses.contains("dark") ?  null : navtext.classList.remove("invert");
+        htmlclasses.contains("dark") ?  null : socials.classList.remove("invert");
+
+      }
+    });
+  }
 </script>

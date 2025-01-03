@@ -5,14 +5,14 @@ const {
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  darkMode: 'selector',
+  darkMode: "selector",
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
       animation: {
         "slide-logos": "slide-logos 30s linear infinite",
         "vertical-slide": "vertical-slide 30s linear infinite forwards",
-        'slide-bg': 'slideBg 8s ease-in-out',
+        "slide-bg": "slideBg 8s ease-in-out",
       },
       keyframes: {
         "slide-logos": {
@@ -22,8 +22,8 @@ export default {
           to: { transform: "translateY(calc(-50% - 2rem))" },
         },
         slideBg: {
-          '0%': { 'background-position': 'center top' },
-          '100%': { 'background-position': 'center bottom' }
+          "0%": { "background-position": "center top" },
+          "100%": { "background-position": "center bottom" },
         },
         aurora: {
           from: {
@@ -48,8 +48,12 @@ export default {
         "dark-card": "hsl(var(--dark-card))",
       },
       backgroundImage: {
-        'photo': "url('./assets/gato.png')",
-      }
+        photo: "url('./assets/gato.png')",
+        pattern:
+          "radial-gradient(circle at top center, #f5fdff 70px, white), repeating-radial-gradient(circle at top center, #ffffff, #ffffff, 200px, transparent 0, #eaeaea 201px)",
+        "dark-pattern":
+          "radial-gradient(circle at top center, #2d3748 70px, #1a202c), repeating-radial-gradient(circle at top center, #1a202c, #1a202c, 200px, transparent 0, #eaeaea 201px)",
+      },
     },
   },
   plugins: [addVariablesForColors],
@@ -65,4 +69,3 @@ function addVariablesForColors({ addBase, theme }) {
     ":root": newVars,
   });
 }
-
