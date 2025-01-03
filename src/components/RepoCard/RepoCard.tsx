@@ -66,6 +66,7 @@ export default function RepoCard({
   ref={cardRef}
   className="block text-decoration-none max-sm:min-w-[90%] sm:w-[30rem] p-4 md:p-5 lg:p-7 bg-gradient-to-br from-neutral-900 to-neutral-950 border-2 border-gray-500 shadow-sm rounded-lg transition-all hover:shadow-md hover:border-accent-dark hover:brightness-110 hover:-translate-y-2"
   href={link}
+  aria-label="Github repo"
   title="View repo"
   target="_blank"
   rel="noopener noreferrer"

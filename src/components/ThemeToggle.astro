@@ -12,14 +12,15 @@ import Icon from "./ui/Icon/Icon.astro";
   />
   <span 
     aria-pressed="false"
-    class="absolute cursor-pointer inset-0 bg-slate-100 transition-all duration-400 rounded-[30px]
+    class="absolute cursor-pointer inset-0 bg-background transition-all duration-400 rounded-[30px]
     before:absolute before:content-[''] before:h-[1.4em] before:w-[1.4em] before:rounded-[20px] 
     before:left-[0.3em] before:top-1/2 before:-translate-y-1/2
     before:bg-gradient-to-r before:from-[#ff0080] before:to-[#ff8c00] before:transition-all before:duration-400
-    aria-pressed:bg-[#303136]
+    aria-pressed:bg-foreground
     aria-pressed:before:left-[calc(100%-1.7em)]
-    aria-pressed:before:bg-[#303136]
-    aria-pressed:before:shadow-[inset_-3px_-2px_5px_-2px_#8983f7,inset_-10px_-4px_0_0_#a3dafb]"
+    aria-pressed:before:bg-foreground
+    aria-pressed:before:shadow-[inset_-3px_-2px_5px_-2px_#8983f7,inset_-10px_-4px_0_0_#a3dafb]
+    border"
   ></span>
 </button>
 </theme-toggle>

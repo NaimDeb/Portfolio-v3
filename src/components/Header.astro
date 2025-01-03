@@ -28,14 +28,9 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
     <a
       href="/"
       class="flex items-center gap-2 leading-[1.1] text-gray  no-underline sm:text-[var(--text-lg)] transition-all"
+      aria-label="Home"
     >
-      <Icon
-        icon="terminal-window"
-        color="var(--accent-regular)"
-        size="1.6em"
-        gradient
-        class="dark:invert"
-      />
+      <img src="/cat.svg" alt="logo" class="dark:invert">
       Naïm Debard
     </a>
 
@@ -97,10 +92,11 @@ const iconLinks: { label: string; href: string; icon: IconProps["icon"] }[] = [
           iconLinks.map(({ href, icon, label }) => (
             <a
               href={href}
-              class="flex p-[var(--icon-padding)] no-underline text-slate-100 md:text-black transition-colors duration-[var(--theme-transition)] text-[1.8rem] 
-            hover:text-slate-200 focus:text-[var(--accent-text-over) hover:scale-125 transition-all"
+              class="flex p-[var(--icon-padding)] dark:invert no-underline text-slate-100 md:text-black transition-colors duration-[var(--theme-transition)] text-[1.8rem] 
+            hover:text-primary focus:text-[var(--accent-text-over) hover:scale-125 transition-all duration-800 ease-in-out"
               target="_blank"
               title={label}
+              aria-label={label}
             >
               <span class="sr-only">{label}</span>
               <Icon icon={icon} />
