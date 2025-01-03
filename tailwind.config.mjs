@@ -25,6 +25,12 @@ export default {
           "0%": { "background-position": "center top" },
           "100%": { "background-position": "center bottom" },
         },
+        dropShadow: {
+          glow: [
+            "0 0px 20px rgba(255,255, 255, 0.35)",
+            "0 0px 65px rgba(255, 255,255, 0.2)"
+          ]
+        },
         aurora: {
           from: {
             backgroundPosition: "50% 50%, 50% 50%",
