@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.8.1",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.0",
+    "@vercel/analytics": "^1.4.1",
     "astro": "^4.11.5",
     "astro-seo": "^0.8.4",
     "autoprefixer": "^10.4.20",
