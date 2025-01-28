@@ -7,7 +7,7 @@
         "src/*"
       ],
       "@cv": [
-        "./cv.json"
+        "./public/assets/.json"
       ]
     },
     "jsx": "react-jsx",
