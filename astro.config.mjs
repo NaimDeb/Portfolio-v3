@@ -8,5 +8,16 @@ export default defineConfig({
   devToolbar: {
     enabled: false
   },
-  integrations: [tailwind(), react()]
+  integrations: [tailwind(), react()],
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          chunkFileNames: 'assets/[name]-[hash].js',
+          entryFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash].[ext]',
+        },
+      },
+    },
+  },
 });

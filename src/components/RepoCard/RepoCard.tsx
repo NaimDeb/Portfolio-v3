@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Icon from "../ui/Icon/Icon";
-import { log } from 'node_modules/astro/dist/core/logger/core';
+// import { log } from 'node_modules/astro/dist/core/logger/core';
 
 type RepoCardProps = {
   repo: string;
