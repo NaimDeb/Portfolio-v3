@@ -54,7 +54,7 @@ export default {
         "dark-card": "hsl(var(--dark-card))",
       },
       backgroundImage: {
-        photo: "url('./assets/gato.png')",
+        photo: "url('/assets/gato.png')",
         pattern:
           "radial-gradient(circle at top center, #f5fdff 70px, white), repeating-radial-gradient(circle at top center, #ffffff, #ffffff, 200px, transparent 0, #eaeaea 201px)",
         "dark-pattern":
