@@ -5,7 +5,7 @@ import Icon from "../ui/Icon/Icon";
 type RepoCardProps = {
   repo: string;
   link: string;
-  website: string;
+  website?: string;
   description: string;
   language: string;
   languageColor: string;
