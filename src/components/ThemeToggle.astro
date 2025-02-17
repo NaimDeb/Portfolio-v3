@@ -36,6 +36,14 @@
       const button = this.querySelector("button")!;
       const span = button.querySelector("span")!;
 
+       // check if prefers color scheme dark
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add(
+          "dark"
+        );
+        span.setAttribute("aria-pressed", String(true));
+      }
+
       /** Set the theme to dark/light mode. */
       const setTheme = (dark: boolean) => {
         document.documentElement.classList[dark ? "add" : "remove"](
