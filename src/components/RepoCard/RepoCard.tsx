@@ -74,14 +74,15 @@ export default function RepoCard({
         <div className="flex items-center justify-between gap-3 repoCard">
           <h3 className="text-lg md:text-xl text-slate-200">{repo}</h3>
           <div className="transition-transform duration-200 hover:scale-125">
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            window.open(link, '_blank');
+          }}
           aria-label={`View ${repo} on GitHub`}
         >
               <Icon icon="github-logo" color="var(--gray-200)" size="2.5em" />
-            </a>
+            </button>
           </div>
         </div>
         <p className="text-sm md:text-base my-3 text-gray-200 overflow-hidden line-clamp-3 md:min-h-[4.5rem] text-left">
