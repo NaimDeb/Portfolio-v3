@@ -130,8 +130,7 @@ export default function RepoCard({
           }`}
           onError={(e) => {
             const img = e.target as HTMLImageElement;
-            img.src =
-              "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=300&auto=format&fit=crop";
+            img.src = "/assets/defaultCardPreview.jpg";
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
