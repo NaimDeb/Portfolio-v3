@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import RepoCard from "../RepoCard/RepoCard";
-import Spinner from "../ui/Spinner";
 import Alert from "../ui/Alert";
+import CardSkeleton from "../ui/CardSkeleton";
 
 type PinnedRepos = {
   owner: string;
@@ -55,14 +55,16 @@ export default function RepoList() {
     return (
       <>
         <div className="flex flex-wrap items-center justify-center gap-8 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
-          {loading ? (
-            <div className="flex flex-col items-center justify-center gap-4 mb-6">
-              <h4 className="text-xl md:text-2xl text-slate-100">Loading projects</h4>
-              <Spinner />
-            </div>
-          ) : (
-            repos.map((repo) => <RepoCard key={repo.repo} {...repo} />)
-          )}
+        {loading ? (
+          // Show multiple skeletons while loading
+          Array(6).fill(0).map((_, index) => (
+            <CardSkeleton key={index} />
+          ))
+        ) : (
+          repos.map((repo) => (
+            <RepoCard key={repo.repo} {...repo} />
+          ))
+        )}
         </div>
         {error && <Alert message={error} />}
       </>
