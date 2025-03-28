@@ -1,10 +1,17 @@
 ---
 import { SEO } from "astro-seo";
-import Analytics from '@vercel/analytics/astro';
-import  SpeedInsights  from "@vercel/speed-insights/astro";
+
+import AnalyticsConsent from "@/components/AnalyticsConsent.astro";
 
 interface Props {
   title: string;
+}
+
+declare global {
+  interface Window {
+    
+    ANALYTICS_ENABLED: boolean
+  }
 }
 
 const { title } = Astro.props;
@@ -12,9 +19,12 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <Analytics/>
-  <SpeedInsights/>
+  
   <head>
+
+    <script>
+      window.ANALYTICS_ENABLED = localStorage.getItem('analytics-preference') === 'true';
+    </script>
     
     <SEO
       title="Naim Debard - Portfolio"
@@ -66,6 +76,7 @@ const { title } = Astro.props;
     class="relative flex flex-col w-full min-h-dvh justify-center items-center bg-background"
   >
     <slot />
+    <AnalyticsConsent/>
   </body>
 </html>
 

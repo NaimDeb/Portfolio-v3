@@ -96,7 +96,7 @@ export default function RepoCard({
             ></span>
             <span className="text-sm md:text-base font-bold text-gray-200">
               {language}
-            </span>
+            </span>²
           </div>
           <div className="flex items-center gap-3">
             {stars >= 0 && (

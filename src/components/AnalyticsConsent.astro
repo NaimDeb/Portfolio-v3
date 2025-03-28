@@ -1,0 +1,50 @@
+---
+// Script client
+const script = `
+function handleAnalyticsChoice(enabled) {
+  localStorage.setItem('analytics-preference', enabled);
+  window.ANALYTICS_ENABLED = enabled;
+  document.getElementById('analytics-banner').style.display = 'none';
+  
+  if (enabled) {
+    import('@vercel/analytics').then(analytics => analytics.inject());
+    import('@vercel/speed-insights').then(insights => insights.inject());
+  }
+}
+
+// Check if we need to show the banner
+if (!localStorage.getItem('analytics-preference')) {
+  document.getElementById('analytics-banner').style.display = 'block';
+}
+`;
+---
+
+<div 
+  id="analytics-banner" 
+  class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-md 
+         bg-neutral-900 p-4 rounded-lg border border-gray-500 
+         shadow-lg z-50 hidden transition-all duration-300"
+>
+  <p class="text-white mb-4 text-sm leading-relaxed">
+    Ce site utilise des cookies et d'autres technologies pour collecter des données 
+    statistiques anonymes sur votre navigation. Acceptez-vous l'utilisation de ces analyses ?
+  </p>
+  <div class="flex justify-end gap-3">
+    <button 
+      onclick="handleAnalyticsChoice(false)"
+      class="px-4 py-2 bg-gray-600 hover:bg-gray-700 
+             rounded text-white text-sm transition-colors"
+    >
+      Refuser
+    </button>
+    <button 
+      onclick="handleAnalyticsChoice(true)"
+      class="px-4 py-2 bg-accent-dark hover:bg-accent-dark/90 
+             rounded text-white text-sm transition-colors"
+    >
+      Accepter
+    </button>
+  </div>
+</div>
+
+<script set:html={script}></script>
