@@ -5,6 +5,12 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  server : {
+    headers : {
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com/ https://vitals.vercel-analytics.com/; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://raw.githubusercontent.com/; connect-src 'self' https://va.vercel-scripts.com/ https://vitals.vercel-analytics.com/ https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/; font-src 'self'"
+
+    }
+  },
   devToolbar: {
     enabled: false
   },
