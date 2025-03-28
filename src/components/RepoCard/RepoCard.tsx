@@ -34,7 +34,7 @@ export default function RepoCard({
 
   const getPreviewUrl = (githubUrl: string): string => {
     const match = githubUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
-    if (!match) return "/assets/defaultCardPreview.jpg";
+    if (!match) return "/assets/defaultCardPreview.webp";
     const [, username, repoName] = match;
 
     // Using Statically CDN to proxy the image
@@ -131,7 +131,7 @@ export default function RepoCard({
           className="w-full h-full object-contain opacity-80 bg-top transition-transform !duration-[8s] ease-in-out"
           onError={(e) => {
             const img = e.currentTarget as HTMLImageElement;
-            img.src = "/assets/defaultCardPreview.jpg";
+            img.src = "/assets/defaultCardPreview.webp";
             img.onerror = null;
           }}
         />
