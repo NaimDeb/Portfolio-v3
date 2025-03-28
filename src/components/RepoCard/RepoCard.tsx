@@ -125,14 +125,9 @@ export default function RepoCard({
       >
         <img
           // Opération ternaire pour éviter erreur
-          src={`${getRawGitHubUrl(link) ? getRawGitHubUrl(link) : null}`}
+          src={`${getRawGitHubUrl(link) || "/assets/defaultCardPreview.jpg"}`}
           alt={`${repo} preview`}
-          className={`w-full h-full object-contain opacity-80 bg-top transition-transform !duration-[8s] ease-in-out
-          }`}
-          onError={(e) => {
-            const img = e.target as HTMLImageElement;
-            img.src = "/assets/defaultCardPreview.jpg";
-          }}
+          className={`w-full h-full object-contain opacity-80 bg-top transition-transform !duration-[8s] ease-in-out`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-2 left-3 right-3">
